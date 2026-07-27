@@ -14,6 +14,7 @@ import { Label } from "@/components/ui/label";
 import { Skeleton } from "@/components/ui/skeleton";
 import { SectorHeatmap } from "@/components/charts/sector-heatmap";
 import { CorrelationMatrix } from "@/components/charts/correlation-matrix";
+import { ErrorBoundary } from "@/components/error-boundary";
 import type { SectorRequest } from "@/types";
 
 const schema = z.object({
@@ -120,7 +121,7 @@ function SectorContent() {
           )}
 
           {result && (
-            <>
+            <ErrorBoundary>
               <Card>
                 <CardHeader>
                   <CardTitle className="text-sm">Sector Betas</CardTitle>
@@ -138,7 +139,7 @@ function SectorContent() {
                   <CorrelationMatrix data={result.correlation_matrix} />
                 </CardContent>
               </Card>
-            </>
+            </ErrorBoundary>
           )}
 
           {!isLoading && !result && (

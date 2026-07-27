@@ -19,6 +19,7 @@ import yfinance as yf
 
 _CACHE_DIR = Path(__file__).resolve().parent.parent / "cache"
 _DB_PATH = _CACHE_DIR / "market_data.sqlite"
+_CACHE_TTL_DAYS = 1  # cache expires after 1 day
 
 # ---------------------------------------------------------------------------
 # Internal helpers
@@ -46,9 +47,16 @@ def _cache_key(prefix: str, *args: str) -> str:
 
 def _get_cached(key: str) -> pd.DataFrame | None:
     conn = _conn()
-    row = conn.execute("SELECT data FROM cache WHERE key = ?", (key,)).fetchone()
+    row = conn.execute("SELECT data, ts FROM cache WHERE key = ?", (key,)).fetchone()
     conn.close()
     if row is None:
+        return None
+    # Check TTL
+    try:
+        cached_ts = datetime.fromisoformat(row[1])
+        if (datetime.utcnow() - cached_ts).days > _CACHE_TTL_DAYS:
+            return None
+    except (ValueError, TypeError):
         return None
     return pd.read_json(pd.io.json.json_normalize(json.loads(row[0])).to_json())
 

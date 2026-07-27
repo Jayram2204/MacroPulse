@@ -6,6 +6,7 @@ from datetime import date
 from typing import Optional
 
 from fastapi import FastAPI, HTTPException, Query
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 from macro_events.registry import (
@@ -38,6 +39,14 @@ app = FastAPI(
     title="Macro Alpha API",
     description="Macro event impact analysis toolkit",
     version="0.1.0",
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
@@ -160,6 +169,9 @@ def post_event_study(req: EventStudyRequest):
         "significant": result.significant_5pct,
         "car_series": {
             str(k): round(v, 6) for k, v in result.car.items()
+        },
+        "ar_series": {
+            str(k): round(v, 6) for k, v in result.ar.items()
         },
     }
 

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 from datetime import date, datetime
+from functools import lru_cache
 from pathlib import Path
 from typing import Literal
 
@@ -44,9 +45,14 @@ class MacroEvent:
         return f"MacroEvent({self.id!r}, {self.date.isoformat()})"
 
 
-def _load_raw() -> list[dict]:
+@lru_cache(maxsize=1)
+def _load_raw_cached() -> tuple[dict, ...]:
     with open(_REGISTRY_PATH, "r") as f:
-        return json.load(f)["events"]
+        return tuple(json.load(f)["events"])
+
+
+def _load_raw() -> list[dict]:
+    return list(_load_raw_cached())
 
 
 def _to_event(raw: dict) -> MacroEvent:

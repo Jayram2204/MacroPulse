@@ -12,9 +12,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Skeleton } from "@/components/ui/skeleton";
-import { RollingCorrChart } from "@/components/charts/rolling-corr-chart";
+import { CorrCompareChart } from "@/components/charts/corr-compare-chart";
 import { GroupedBarChart } from "@/components/charts/grouped-bar-chart";
 import { MetricCard } from "@/components/metric-card";
+import { ErrorBoundary } from "@/components/error-boundary";
 import type { FlowRequest } from "@/types";
 
 const schema = z.object({
@@ -140,7 +141,7 @@ function FlowFxContent() {
           )}
 
           {result && (
-            <>
+            <ErrorBoundary>
               {/* FX-Equity Correlation */}
               <div>
                 <h3 className="text-sm font-medium text-muted-foreground mb-3">
@@ -214,9 +215,10 @@ function FlowFxContent() {
                     <CardTitle className="text-sm">FX-Equity Correlation</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <RollingCorrChart
+                    <CorrCompareChart
                       pre={result.fx_equity_corr.pre}
                       post={result.fx_equity_corr.post}
+                      label="FX-Equity Correlation"
                     />
                   </CardContent>
                 </Card>
@@ -234,7 +236,7 @@ function FlowFxContent() {
                   </CardContent>
                 </Card>
               </div>
-            </>
+            </ErrorBoundary>
           )}
 
           {!isLoading && !result && (

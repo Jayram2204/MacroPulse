@@ -35,6 +35,7 @@ export interface EventStudyResponse {
   p_value: number;
   significant: boolean;
   car_series: Record<string, number>;
+  ar_series: Record<string, number>;
 }
 
 export interface MultiEventStudyRequest {

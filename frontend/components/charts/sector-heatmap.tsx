@@ -12,12 +12,12 @@ interface SectorHeatmapProps {
 export function SectorHeatmap({ data }: SectorHeatmapProps) {
   const theme = useChartTheme();
 
-  const { sectors, betas, cars } = useMemo(() => {
+  const { sectors, betas, rSquaredVals } = useMemo(() => {
     const entries = Object.entries(data);
     return {
       sectors: entries.map(([k]) => k),
       betas: entries.map(([, v]) => v.beta),
-      cars: entries.map(([, v]) => v.r_squared),
+      rSquaredVals: entries.map(([, v]) => v.r_squared),
     };
   }, [data]);
 
@@ -58,7 +58,7 @@ export function SectorHeatmap({ data }: SectorHeatmapProps) {
   );
 
   const tableHeaders = ["Sector", "Beta", "R²"];
-  const tableRows = sectors.map((s, i) => [s, betas[i].toFixed(4), cars[i].toFixed(4)]);
+  const tableRows = sectors.map((s, i) => [s, betas[i].toFixed(4), rSquaredVals[i].toFixed(4)]);
 
   return (
     <div>

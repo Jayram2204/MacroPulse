@@ -17,6 +17,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { CarChart } from "@/components/charts/car-chart";
 import { ArBarChart } from "@/components/charts/ar-bar-chart";
 import { MetricCard } from "@/components/metric-card";
+import { ErrorBoundary } from "@/components/error-boundary";
 import type { EventStudyRequest } from "@/types";
 
 const schema = z.object({
@@ -162,7 +163,7 @@ function EventStudyContent() {
           )}
 
           {result && (
-            <>
+            <ErrorBoundary>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <MetricCard
                   title="CAR"
@@ -205,7 +206,7 @@ function EventStudyContent() {
                   <CardTitle className="text-sm">Daily Abnormal Returns</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <ArBarChart data={result.car_series} />
+                  <ArBarChart data={result.ar_series} />
                 </CardContent>
               </Card>
 
@@ -234,7 +235,7 @@ function EventStudyContent() {
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
-            </>
+            </ErrorBoundary>
           )}
 
           {!isLoading && !result && selectedEventId && (
