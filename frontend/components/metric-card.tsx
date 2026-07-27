@@ -24,13 +24,13 @@ export function MetricCard({
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="text-2xl font-bold">{value}</div>
+        <div className="text-2xl font-bold tabular-nums">{value}</div>
         {delta && (
           <p
             className={cn(
-              "text-xs mt-1",
-              deltaType === "positive" && "text-green-600 dark:text-green-400",
-              deltaType === "negative" && "text-red-600 dark:text-red-400",
+              "text-xs mt-1 tabular-nums",
+              deltaType === "positive" && "text-gain",
+              deltaType === "negative" && "text-loss",
               deltaType === "neutral" && "text-muted-foreground"
             )}
           >

@@ -17,6 +17,7 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { TrendingUp, GitBranch, BarChart3, Calendar } from "lucide-react";
 import Link from "next/link";
+import { getCategoryClasses, getCategoryLabel } from "@/lib/constants";
 
 const CATEGORIES = [
   { value: "all", label: "All" },
@@ -26,14 +27,6 @@ const CATEGORIES = [
   { value: "banking_crisis", label: "Banking" },
   { value: "exogenous_shock", label: "Shocks" },
 ] as const;
-
-const CATEGORY_COLORS: Record<string, string> = {
-  fed_decision: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300",
-  tariff: "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300",
-  election: "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300",
-  banking_crisis: "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300",
-  exogenous_shock: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300",
-};
 
 function EventsContent() {
   const router = useRouter();
@@ -98,9 +91,9 @@ function EventsContent() {
                   </CardTitle>
                   <Badge
                     variant="secondary"
-                    className={CATEGORY_COLORS[event.category] ?? ""}
+                    className={getCategoryClasses(event.category)}
                   >
-                    {event.category.replace("_", " ")}
+                    {getCategoryLabel(event.category)}
                   </Badge>
                 </div>
               </CardHeader>
@@ -139,7 +132,7 @@ function EventsContent() {
               </p>
               <div className="flex items-center gap-2">
                 <Badge variant="secondary">
-                  {selectedEvent.category.replace("_", " ")}
+                  {getCategoryLabel(selectedEvent.category)}
                 </Badge>
                 {selectedEvent.magnitude_bp !== null && (
                   <Badge variant="outline">

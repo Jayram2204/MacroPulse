@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Skeleton } from "@/components/ui/skeleton";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { CorrCompareChart } from "@/components/charts/corr-compare-chart";
 import { GroupedBarChart } from "@/components/charts/grouped-bar-chart";
 import { MetricCard } from "@/components/metric-card";
@@ -81,18 +82,21 @@ function FlowFxContent() {
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
                 <div className="space-y-2">
                   <Label>Event</Label>
-                  <select
-                    className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+                  <Select
                     value={selectedEventId}
-                    onChange={(e) => setSelectedEventId(e.target.value)}
+                    onValueChange={(val) => setSelectedEventId(val ?? "")}
                   >
-                    <option value="">Select an event...</option>
-                    {events?.map((ev) => (
-                      <option key={ev.id} value={ev.id}>
-                        {ev.name} ({ev.date})
-                      </option>
-                    ))}
-                  </select>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Select an event..." />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {events?.map((ev) => (
+                        <SelectItem key={ev.id} value={ev.id}>
+                          {ev.name} ({ev.date})
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                 </div>
 
                 <div className="space-y-2">

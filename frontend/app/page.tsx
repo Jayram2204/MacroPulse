@@ -1,11 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { Calendar, TrendingUp, GitBranch, BarChart3, Clock, ArrowRight } from "lucide-react";
+import { Calendar, TrendingUp, GitBranch, BarChart3, Clock, ArrowRight, AlertTriangle } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useEvents } from "@/hooks/use-events";
 import { Skeleton } from "@/components/ui/skeleton";
+import { getCategoryClasses, getCategoryLabel } from "@/lib/constants";
 
 const FEATURES = [
   {
@@ -28,16 +29,8 @@ const FEATURES = [
   },
 ] as const;
 
-const CATEGORY_COLORS: Record<string, string> = {
-  fed_decision: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300",
-  tariff: "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300",
-  election: "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300",
-  banking_crisis: "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300",
-  exogenous_shock: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300",
-};
-
 export default function OverviewPage() {
-  const { data: events, isLoading } = useEvents();
+  const { data: events, isLoading, isError } = useEvents();
 
   const recentEvents = events
     ?.slice()
@@ -87,6 +80,11 @@ export default function OverviewPage() {
                 <Skeleton key={i} className="h-12 w-full" />
               ))}
             </div>
+          ) : isError ? (
+            <div className="flex items-center gap-2 text-sm text-muted-foreground py-8 justify-center">
+              <AlertTriangle className="h-4 w-4" />
+              Could not load events. Check that the API server is running.
+            </div>
           ) : (
             <div className="space-y-2">
               {recentEvents?.map((event) => (
@@ -98,9 +96,9 @@ export default function OverviewPage() {
                   <div className="flex items-center gap-3">
                     <Badge
                       variant="secondary"
-                      className={`${CATEGORY_COLORS[event.category] ?? ""} text-xs`}
+                      className={`${getCategoryClasses(event.category)} text-xs`}
                     >
-                      {event.category.replace("_", " ")}
+                      {getCategoryLabel(event.category)}
                     </Badge>
                     <span className="font-medium">{event.name}</span>
                   </div>

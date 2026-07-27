@@ -43,16 +43,16 @@ export function ArBarChart({ data }: ArBarChartProps) {
       splitLine: { lineStyle: { color: theme.echarts.splitLineColor } },
       axisLabel: { color: theme.echarts.textStyle.color },
     },
-    series: [
-      {
-        type: "bar" as const,
-        data: values.map((v) => ({
-          value: v,
-          itemStyle: { color: v >= 0 ? "#22c55e" : "#ef4444" },
-        })),
-        barMaxWidth: 32,
-      },
-    ],
+      series: [
+        {
+          type: "bar" as const,
+          data: values.map((v) => ({
+            value: v,
+            itemStyle: { color: v >= 0 ? "var(--gain)" : "var(--loss)" },
+          })),
+          barMaxWidth: 32,
+        },
+      ],
     grid: { left: 48, right: 16, top: 16, bottom: 32 },
   };
 

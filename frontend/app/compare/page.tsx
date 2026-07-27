@@ -138,14 +138,14 @@ function CompareContent() {
                         <tr key={r.event_id} className="border-b border-border/50 hover:bg-accent/50">
                           <td className="py-2 pr-4 font-medium max-w-[200px] truncate">{r.event_name}</td>
                           <td className="text-right py-2 px-4 text-muted-foreground">{r.date}</td>
-                          <td className="text-right py-2 px-4 font-mono">
+                          <td className="text-right py-2 px-4 font-mono tabular-nums">
                             {r.car_total_pct >= 0 ? "+" : ""}
                             {r.car_total_pct.toFixed(3)}%
                           </td>
-                          <td className="text-right py-2 px-4 font-mono">{r.z_stat.toFixed(3)}</td>
-                          <td className="text-right py-2 px-4 font-mono">{r.p_value.toFixed(4)}</td>
-                          <td className="text-right py-2 px-4 font-mono">{r.beta.toFixed(4)}</td>
-                          <td className="text-right py-2 px-4 font-mono">{r.r_squared.toFixed(4)}</td>
+                          <td className="text-right py-2 px-4 font-mono tabular-nums">{r.z_stat.toFixed(3)}</td>
+                          <td className="text-right py-2 px-4 font-mono tabular-nums">{r.p_value.toFixed(4)}</td>
+                          <td className="text-right py-2 px-4 font-mono tabular-nums">{r.beta.toFixed(4)}</td>
+                          <td className="text-right py-2 px-4 font-mono tabular-nums">{r.r_squared.toFixed(4)}</td>
                           <td className="text-center py-2 pl-4">
                             <Badge
                               variant={r.significant ? (r.car_total_pct >= 0 ? "default" : "destructive") : "secondary"}

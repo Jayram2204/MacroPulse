@@ -33,9 +33,12 @@ export default function RootLayout({
     >
       <body className="min-h-full">
         <Providers>
+          <a href="#main-content" className="skip-link">
+            Skip to content
+          </a>
           <div className="flex min-h-screen">
             <NavSidebar />
-            <main className="flex-1 pl-0 md:pl-56">
+            <main id="main-content" role="main" className="flex-1 pl-0 md:pl-56">
               <div className="h-14 border-b border-border flex items-center px-6">
                 <h1 className="text-sm font-medium text-muted-foreground">
                   Event Impact Analysis

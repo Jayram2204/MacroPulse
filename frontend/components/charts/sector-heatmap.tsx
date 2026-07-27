@@ -47,7 +47,7 @@ export function SectorHeatmap({ data }: SectorHeatmapProps) {
           type: "bar" as const,
           data: betas.map((v) => ({
             value: +v.toFixed(4),
-            itemStyle: { color: v > 1 ? "#ef4444" : v > 0.8 ? "#f59e0b" : "#22c55e" },
+            itemStyle: { color: v > 1 ? "var(--loss)" : v > 0.8 ? "#f59e0b" : "var(--gain)" },
           })),
           barMaxWidth: 40,
         },

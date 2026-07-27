@@ -46,6 +46,24 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* Semantic financial tokens */
+  --color-gain: var(--gain);
+  --color-gain-muted: var(--gain-muted);
+  --color-loss: var(--loss);
+  --color-loss-muted: var(--loss-muted);
+
+  /* Category tokens */
+  --color-cat-fed: var(--cat-fed);
+  --color-cat-tariff: var(--cat-tariff);
+  --color-cat-election: var(--cat-election);
+  --color-cat-banking: var(--cat-banking);
+  --color-cat-shock: var(--cat-shock);
+  --color-cat-fed-fg: var(--cat-fed-fg);
+  --color-cat-tariff-fg: var(--cat-tariff-fg);
+  --color-cat-election-fg: var(--cat-election-fg);
+  --color-cat-banking-fg: var(--cat-banking-fg);
+  --color-cat-shock-fg: var(--cat-shock-fg);
 }
 
 :root {
@@ -81,6 +99,24 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* Financial semantic: green for gains, red for losses */
+  --gain: oklch(0.623 0.197 149.2);
+  --gain-muted: oklch(0.92 0.04 149.2);
+  --loss: oklch(0.577 0.245 27.3);
+  --loss-muted: oklch(0.92 0.06 27.3);
+
+  /* Category badge backgrounds + foregrounds */
+  --cat-fed: oklch(0.92 0.06 255);
+  --cat-fed-fg: oklch(0.35 0.12 255);
+  --cat-tariff: oklch(0.92 0.07 65);
+  --cat-tariff-fg: oklch(0.38 0.12 55);
+  --cat-election: oklch(0.92 0.06 305);
+  --cat-election-fg: oklch(0.38 0.12 305);
+  --cat-banking: oklch(0.92 0.06 25);
+  --cat-banking-fg: oklch(0.38 0.12 25);
+  --cat-shock: oklch(0.92 0.05 85);
+  --cat-shock-fg: oklch(0.35 0.08 85);
 }
 
 .dark {
@@ -115,6 +151,24 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+
+  /* Financial semantic: brighter in dark mode for contrast */
+  --gain: oklch(0.723 0.197 149.2);
+  --gain-muted: oklch(0.28 0.08 149.2);
+  --loss: oklch(0.704 0.191 22.2);
+  --loss-muted: oklch(0.28 0.08 22.2);
+
+  /* Category badge backgrounds + foregrounds (dark mode) */
+  --cat-fed: oklch(0.28 0.08 255);
+  --cat-fed-fg: oklch(0.82 0.06 255);
+  --cat-tariff: oklch(0.28 0.08 55);
+  --cat-tariff-fg: oklch(0.82 0.06 55);
+  --cat-election: oklch(0.28 0.08 305);
+  --cat-election-fg: oklch(0.82 0.06 305);
+  --cat-banking: oklch(0.28 0.08 25);
+  --cat-banking-fg: oklch(0.82 0.06 25);
+  --cat-shock: oklch(0.28 0.06 85);
+  --cat-shock-fg: oklch(0.82 0.06 85);
 }
 
 @layer base {
@@ -126,5 +180,27 @@
   }
   html {
     @apply font-sans;
+  }
+  /* Typography scale */
+  h1 { @apply text-2xl font-bold tracking-tight leading-tight; }
+  h2 { @apply text-xl font-semibold tracking-tight leading-snug; }
+  h3 { @apply text-lg font-medium leading-snug; }
+  h4 { @apply text-base font-medium leading-normal; }
+  /* Tabular number alignment for all numeric data */
+  .tabular-nums { font-variant-numeric: tabular-nums; }
+  /* Skip-to-content link */
+  .skip-link {
+    @apply fixed top-0 left-0 z-[100] -translate-y-full bg-primary text-primary-foreground px-4 py-2 text-sm font-medium transition-transform;
+  }
+  .skip-link:focus {
+    @apply translate-y-0;
+  }
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
