@@ -1,0 +1,184 @@
+{
+  "events": [
+    {
+      "id": "fed_hike_2022_03",
+      "name": "Fed raises rates 25bp (first hike in cycle)",
+      "category": "fed_decision",
+      "date": "2022-03-16",
+      "description": "Federal Reserve raises federal funds rate by 25 basis points to 0.25-0.50%, beginning the 2022 tightening cycle.",
+      "expected": true,
+      "magnitude_bp": 25
+    },
+    {
+      "id": "fed_hike_2022_05",
+      "name": "Fed raises rates 50bp",
+      "category": "fed_decision",
+      "date": "2022-05-04",
+      "description": "Federal Reserve raises rates by 50 basis points to 0.75-1.00%, largest hike since 2000.",
+      "expected": true,
+      "magnitude_bp": 50
+    },
+    {
+      "id": "fed_hike_2022_06",
+      "name": "Fed raises rates 75bp (surprise)",
+      "category": "fed_decision",
+      "date": "2022-06-15",
+      "description": "Federal Reserve raises rates by 75 basis points to 1.50-1.75%, largest single hike since 1994.",
+      "expected": false,
+      "magnitude_bp": 75
+    },
+    {
+      "id": "fed_hike_2022_07",
+      "name": "Fed raises rates 75bp",
+      "category": "fed_decision",
+      "date": "2022-07-27",
+      "description": "Federal Reserve raises rates by 75 basis points to 2.25-2.50%.",
+      "expected": true,
+      "magnitude_bp": 75
+    },
+    {
+      "id": "fed_hike_2022_09",
+      "name": "Fed raises rates 75bp (3rd consecutive)",
+      "category": "fed_decision",
+      "date": "2022-09-21",
+      "description": "Federal Reserve raises rates by 75 basis points to 3.00-3.25%, dot plot signals higher terminal rate.",
+      "expected": true,
+      "magnitude_bp": 75
+    },
+    {
+      "id": "fed_hike_2022_11",
+      "name": "Fed raises rates 75bp",
+      "category": "fed_decision",
+      "date": "2022-11-02",
+      "description": "Federal Reserve raises rates by 75 basis points to 3.75-4.00%.",
+      "expected": true,
+      "magnitude_bp": 75
+    },
+    {
+      "id": "fed_hike_2022_12",
+      "name": "Fed raises rates 50bp (slows pace)",
+      "category": "fed_decision",
+      "date": "2022-12-14",
+      "description": "Federal Reserve raises rates by 50 basis points to 4.25-4.50%, signaling slower pace ahead.",
+      "expected": true,
+      "magnitude_bp": 50
+    },
+    {
+      "id": "fed_hike_2023_02",
+      "name": "Fed raises rates 25bp",
+      "category": "fed_decision",
+      "date": "2023-02-01",
+      "description": "Federal Reserve raises rates by 25 basis points to 4.50-4.75%.",
+      "expected": true,
+      "magnitude_bp": 25
+    },
+    {
+      "id": "fed_hike_2023_03",
+      "name": "Fed raises rates 25bp (SVB crisis)",
+      "category": "fed_decision",
+      "date": "2023-03-22",
+      "description": "Federal Reserve raises rates by 25 basis points to 4.75-5.00% despite SVB collapse, signaling data dependence.",
+      "expected": true,
+      "magnitude_bp": 25
+    },
+    {
+      "id": "fed_pause_2023_06",
+      "name": "Fed pauses rate hikes",
+      "category": "fed_decision",
+      "date": "2023-06-14",
+      "description": "Federal Reserve holds rates at 5.00-5.25%, first pause after 10 consecutive hikes.",
+      "expected": true,
+      "magnitude_bp": 0
+    },
+    {
+      "id": "fed_hike_2023_07",
+      "name": "Fed raises rates 25bp (last hike)",
+      "category": "fed_decision",
+      "date": "2023-07-26",
+      "description": "Federal Reserve raises rates by 25 basis points to 5.25-5.50%, widely expected to be the final hike.",
+      "expected": true,
+      "magnitude_bp": 25
+    },
+    {
+      "id": "fed_cut_2024_09",
+      "name": "Fed cuts rates 50bp (first cut)",
+      "category": "fed_decision",
+      "date": "2024-09-18",
+      "description": "Federal Reserve cuts rates by 50 basis points to 4.75-5.00%, beginning easing cycle.",
+      "expected": true,
+      "magnitude_bp": -50
+    },
+    {
+      "id": "fed_cut_2024_11",
+      "name": "Fed cuts rates 25bp",
+      "category": "fed_decision",
+      "date": "2024-11-07",
+      "description": "Federal Reserve cuts rates by 25 basis points to 4.50-4.75%.",
+      "expected": true,
+      "magnitude_bp": -25
+    },
+    {
+      "id": "trump_tariffs_2025_02",
+      "name": "Trump imposes 25% tariffs on Canada/Mexico",
+      "category": "tariff",
+      "date": "2025-02-01",
+      "description": "Executive orders imposing 25% tariffs on Canadian and Mexican imports, 10% on Chinese goods.",
+      "expected": false,
+      "magnitude_bp": null
+    },
+    {
+      "id": "tariff_pause_2025_02",
+      "name": "Tariff pause on Mexico/Canada (30 days)",
+      "category": "tariff",
+      "date": "2025-02-04",
+      "description": "30-day pause announced on tariffs against Mexico and Canada after negotiations.",
+      "expected": false,
+      "magnitude_bp": null
+    },
+    {
+      "id": "us_china_tariff_escalation_2025_04",
+      "name": "US-China tariff escalation to 145%",
+      "category": "tariff",
+      "date": "2025-04-09",
+      "description": "US raises tariffs on Chinese imports to 145%; China retaliates with 125% on US goods.",
+      "expected": false,
+      "magnitude_bp": null
+    },
+    {
+      "id": "tariff_truce_2025_05",
+      "name": "US-China 90-day tariff truce (Geneva)",
+      "category": "tariff",
+      "date": "2025-05-12",
+      "description": "90-day pause: US reduces China tariffs to 30%, China reduces US tariffs to 10%.",
+      "expected": false,
+      "magnitude_bp": null
+    },
+    {
+      "id": "election_2024",
+      "name": "2024 US Presidential Election",
+      "category": "election",
+      "date": "2024-11-05",
+      "description": "Donald Trump wins presidential election, Republicans gain Senate majority.",
+      "expected": false,
+      "magnitude_bp": null
+    },
+    {
+      "id": "svb_collapse_2023",
+      "name": "Silicon Valley Bank collapse",
+      "category": "banking_crisis",
+      "date": "2023-03-10",
+      "description": "SVB fails after bank run; triggers regional bank selloff and emergency Fed lending facility.",
+      "expected": false,
+      "magnitude_bp": null
+    },
+    {
+      "id": "covid_crash_2020",
+      "name": "COVID-19 market crash",
+      "category": "exogenous_shock",
+      "date": "2020-03-16",
+      "description": "S&P 500 drops 12% in one day; WHO declares pandemic; circuit breakers triggered.",
+      "expected": false,
+      "magnitude_bp": null
+    }
+  ]
+}
